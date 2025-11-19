@@ -1,18 +1,30 @@
 html {
+    text-align: center;
   background-color: teal;
   color: white;
-  font-family: "Courier New", Courier, monospace;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
 }
-button {
+a {
+  color: white;
+}
+.btn-white-teal {
+    display: inline-block;
   background-color: white;
   color: teal;
+  font-weight: bold;
+  border: none;
   border-radius: 15px;
-
-  /* border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 16px; */
+  padding: 10px 20px;
+  font-size: 16px;
+  text-decoration: none;
 }
 img {
   border-radius: 15px;
+}
+#config {
+    display: inline-block;
+    margin-top: 20px;
+    background-color: rgba(255, 255, 255, 0.374);
+    padding: 15px;
+    border-radius: 10px;
 }
