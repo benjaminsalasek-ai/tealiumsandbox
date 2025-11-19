@@ -38,14 +38,19 @@ function displayUtagCfg(targetElement) {
 
 function extractCfgDetails(cfg) {
   var utidParts = parseUtid(cfg.utid || "");
+  var timeParts = formatUtidTimeParts(utidParts.time);
   return {
+    account: utidParts.account || "N/A",
+    profile: utidParts.profile || "N/A",
+    environment: parseEnvironment(cfg.path || "") || "N/A",
+
     template: cfg.template || "N/A",
     domain: cfg.domain || "N/A",
     datasource: cfg.datasource || "N/A",
-    environment: parseEnvironment(cfg.path || "") || "N/A",
-    account: utidParts.account || "N/A",
-    profile: utidParts.profile || "N/A",
-    time: formatUtidTime(utidParts.time) || "N/A",
+
+    last_publish_date: timeParts.date || "N/A",
+    last_publish_time_tealium_format: timeParts.time24 || "N/A",
+    last_publish_time_central: timeParts.time12 || "N/A",
   };
 }
 
@@ -95,18 +100,58 @@ function parseUtid(utid) {
   };
 }
 
-function formatUtidTime(raw) {
+function formatUtidTimeParts(raw) {
   if (!raw) {
-    return null;
+    return { date: null, time24: null, time12: null };
   }
   var clean = raw.trim();
   if (!/^\d{12}$/.test(clean)) {
-    return clean;
+    return { date: clean, time24: clean, time12: clean };
   }
-  var year = clean.slice(0, 4);
-  var month = clean.slice(4, 6);
-  var day = clean.slice(6, 8);
-  var hour = clean.slice(8, 10);
-  var minute = clean.slice(10, 12);
-  return year + "-" + month + "-" + day + " " + hour + ":" + minute;
+  var year = parseInt(clean.slice(0, 4), 10);
+  var month = parseInt(clean.slice(4, 6), 10) - 1;
+  var day = parseInt(clean.slice(6, 8), 10);
+  var hour = parseInt(clean.slice(8, 10), 10);
+  var minute = parseInt(clean.slice(10, 12), 10);
+  var utcDate = new Date(Date.UTC(year, month, day, hour, minute));
+  var rawTime = clean.slice(8, 12);
+
+  try {
+    var centralDate = new Intl.DateTimeFormat("en-CA", {
+      timeZone: "America/Chicago",
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    }).format(utcDate);
+
+    var centralTime12 = new Intl.DateTimeFormat("en-US", {
+      timeZone: "America/Chicago",
+      hour: "numeric",
+      minute: "2-digit",
+      hour12: true,
+    }).format(utcDate);
+
+    return { date: centralDate, time24: rawTime, time12: centralTime12 };
+  } catch (err) {
+    var fallbackDate =
+      clean.slice(0, 4) + "-" + clean.slice(4, 6) + "-" + clean.slice(6, 8);
+    var fallbackTime12 = fallbackTo12Hour(
+      clean.slice(8, 10),
+      clean.slice(10, 12)
+    );
+    return { date: fallbackDate, time24: rawTime, time12: fallbackTime12 };
+  }
+}
+
+function fallbackTo12Hour(hourStr, minuteStr) {
+  var hourNum = parseInt(hourStr, 10);
+  if (isNaN(hourNum)) {
+    return hourStr + ":" + minuteStr;
+  }
+  var suffix = hourNum >= 12 ? "PM" : "AM";
+  var hour12 = hourNum % 12;
+  if (hour12 === 0) {
+    hour12 = 12;
+  }
+  return hour12 + ":" + minuteStr + " " + suffix;
 }

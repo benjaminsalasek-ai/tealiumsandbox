@@ -1,14 +1,15 @@
 html {
-    text-align: center;
+  text-align: center;
   background-color: teal;
   color: white;
-  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 a {
   color: white;
 }
 .btn-white-teal {
-    display: inline-block;
+  display: inline-block;
   background-color: white;
   color: teal;
   font-weight: bold;
@@ -22,45 +23,47 @@ img {
   border-radius: 15px;
 }
 #config {
-    display: inline-block;
-    margin-top: 20px;
-    background-color: rgba(255, 255, 255, 0.374);
-    padding: 15px;
-    border-radius: 10px;
+  display: inline-block;
+  margin-top: 20px;
+  background-color: rgba(255, 255, 255, 0.374);
+  padding: 15px;
+  border-radius: 10px;
 }
 .config-table-wrapper {
-    display: inline-block;
-    margin-top: 20px;
-    background-color: rgba(255, 255, 255, 0.2);
-    padding: 20px;
-    border-radius: 10px;
-    text-align: left;
-    max-width: 90%;
-    overflow-x: auto;
+  display: inline-block;
+  margin-top: 20px;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: left;
+  max-width: 90%;
+  overflow-x: auto;
 }
 .config-table {
-    width: 100%;
-    border-collapse: collapse;
-    color: white;
-    font-size: 16px;
+  width: 100%;
+  border-collapse: collapse;
+  color: white;
+  font-size: 16px;
 }
 .config-table th,
 .config-table td {
-    padding: 8px 10px;
+  padding: 8px 10px;
 }
 .config-table th {
-    text-align: left;
-    font-weight: bold;
-    width: 35%;
+  text-align: left;
+  font-weight: bold;
+  width: 35%;
 }
 .config-table tr:nth-child(odd) {
-    background-color: rgba(255, 255, 255, 0.08);
+  background-color: rgba(255, 255, 255, 0.08);
 }
 .config-table tr:nth-child(even) {
-    background-color: rgba(0, 0, 0, 0.15);
+  background-color: rgba(0, 0, 0, 0.15);
 }
 #puppyTitle {
-    color: yellow;
-    background-color: green;
-    margin: auto;
+  color: yellow;
+  background-color: black;
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 2px;
 }
