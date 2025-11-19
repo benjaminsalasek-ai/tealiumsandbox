@@ -28,3 +28,19 @@ img {
     padding: 15px;
     border-radius: 10px;
 }
+#utagCfg {
+    display: inline-block;
+    margin-top: 20px;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 15px;
+    border-radius: 10px;
+    text-align: left;
+    max-width: 90%;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+#puppyTitle {
+    color: yellow;
+    background-color: green;
+    margin: auto;
+}
