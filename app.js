@@ -45,8 +45,6 @@ function extractCfgDetails(cfg) {
     environment: parseEnvironment(cfg.path || "") || "N/A",
 
     template: cfg.template || "N/A",
-    domain: cfg.domain || "N/A",
-    datasource: cfg.datasource || "N/A",
 
     last_publish_date: timeParts.date || "N/A",
     last_publish_time_tealium_format: timeParts.time24 || "N/A",
