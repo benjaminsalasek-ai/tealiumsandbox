@@ -28,16 +28,36 @@ img {
     padding: 15px;
     border-radius: 10px;
 }
-#utagCfg {
+.config-table-wrapper {
     display: inline-block;
     margin-top: 20px;
     background-color: rgba(255, 255, 255, 0.2);
-    padding: 15px;
+    padding: 20px;
     border-radius: 10px;
     text-align: left;
     max-width: 90%;
     overflow-x: auto;
-    white-space: pre-wrap;
+}
+.config-table {
+    width: 100%;
+    border-collapse: collapse;
+    color: white;
+    font-size: 16px;
+}
+.config-table th,
+.config-table td {
+    padding: 8px 10px;
+}
+.config-table th {
+    text-align: left;
+    font-weight: bold;
+    width: 35%;
+}
+.config-table tr:nth-child(odd) {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+.config-table tr:nth-child(even) {
+    background-color: rgba(0, 0, 0, 0.15);
 }
 #puppyTitle {
     color: yellow;
