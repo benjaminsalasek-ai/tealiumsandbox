@@ -60,10 +60,13 @@ img {
 .config-table tr:nth-child(even) {
   background-color: rgba(0, 0, 0, 0.15);
 }
-#puppyTitle {
+h2 {
   color: yellow;
-  background-color: black;
-  display: inline-block;
+  text-shadow: 5px 0px 2px red, -5px 0px 2px blue, 1px 1px 2px greenyellow;
+  display: block;
   padding: 5px 10px;
   border-radius: 2px;
 }
+/* #puppyTitle {
+  color: greenyellow;
+} */

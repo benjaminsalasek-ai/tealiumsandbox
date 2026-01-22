@@ -1,5 +1,5 @@
 window.onload = function () {
-  console.log("App loaded");
+  console.log("window.onload fired");
   var utagScript = document.getElementById("utagjs");
   var configElement = document.getElementById("config");
 
